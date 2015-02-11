@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -wT
 #
 # Simple script to calculate the final score percentage of
 # the course Learning How to Learn version 003
@@ -12,6 +12,9 @@
 #
 # C. Fenijn, February 2015.
 #
+
+use strict;
+use warnings;
 
 my $total=0;                      # init
 
@@ -52,14 +55,14 @@ if($type=~/d/i)
   $weekly1=($weekly1/13) * 15;
   $weekly2=($weekly2/12) * 15;
   $weekly3=($weekly3/14) * 15;
-  $weekly_subtotal=$weekly1+$weekly2+$weekly3;
+  my $weekly_subtotal=$weekly1+$weekly2+$weekly3;
   print("Weekly subtotal: $weekly_subtotal\n");
 
   $final=($final/27) * 30;
 
   $assignment1=($assignment1/10) * 10;
   $assignment2=($assignment2/15) * 10;
-  $assignment_subtotal=$assignment1+$assignment2;
+  my $assignment_subtotal=$assignment1+$assignment2;
   print("Assignment subtotal: $assignment_subtotal\n");
 
   print("Adding up Intro Quiz $intro_quiz, Weekly Subtotal $weekly_subtotal,\nAssignment Subtotal $assignment_subtotal and Final $final...\n");
@@ -75,7 +78,7 @@ else
   $weekly1=($weekly1/13) * 20;
   $weekly2=($weekly2/12) * 20;
   $weekly3=($weekly3/14) * 20;
-  $weekly_subtotal=$weekly1+$weekly2+$weekly3;
+  my $weekly_subtotal=$weekly1+$weekly2+$weekly3;
   print("Weekly subtotal: $weekly_subtotal\n");
 
   $final=($final/27) * 35;
