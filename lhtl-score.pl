@@ -22,35 +22,47 @@ print("Type of student [r]egular or [d]istincion: ");
 my $type=<STDIN>;
 $type=~s/\s+$//g;
 
+if($type !~ /^[d|r]$/i)
+{
+  die("Error: Fatal: you must type r or d, exiting...\n");
+}
+
 print("Intro quiz (max 5): ");
 my $intro_quiz=<STDIN>;
 $intro_quiz=~s/\s+$//g;
+exit_if_wrong_value(5,$intro_quiz);
 
 print("Weekly quiz 1 (max 13): ");
 my $weekly1=<STDIN>;
 $weekly1=~s/\s+$//g;
+exit_if_wrong_value(13,$weekly1);
 
 print("Weekly quiz 2 (max 12): ");
 my $weekly2=<STDIN>;
 $weekly2=~s/\s+$//g;
+exit_if_wrong_value(12,$weekly2);
 
 print("Weekly quiz 3: (max 14): ");
 my $weekly3=<STDIN>;
 $weekly3=~s/\s+$//g;
+exit_if_wrong_value(14,$weekly3);
 
 print("Final exam (max 27): ");
 my $final=<STDIN>;
 $final=~s/\s+$//g;
+exit_if_wrong_value(27,$final);
 
 if($type=~/d/i)
 {
   print("Assignment 1 (max 10): ");
   my $assignment1=<STDIN>;
   $assignment1=~s/\s+$//g;
+  exit_if_wrong_value(10,$assignment1);
 
   print("Assignment 2 (max 15): ");
   my $assignment2=<STDIN>;
   $assignment2=~s/\s+$//g;
+  exit_if_wrong_value(15,$assignment2);
 
   $weekly1=($weekly1/13) * 15;
   $weekly2=($weekly2/12) * 15;
@@ -93,3 +105,17 @@ else
 print("Total score percentage: $total\n");
 
 
+sub exit_if_wrong_value
+{
+  my $max_value=$_[0];
+  my $check_value=$_[1];
+  if($check_value !~ /^\d+$/ &&
+     $check_value !~ /^\d+\.\d+$/)
+  {
+    die("Error: Fatal: Value must be in format N or N.N, so either an integer or a float. Exiting...\n");
+  }
+  elsif($check_value > $max_value)
+  {
+    die("Error: Value $check_value is larger than the maximum value $max_value. Exiting...\n");
+  }
+}
