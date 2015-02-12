@@ -1,4 +1,4 @@
-#!/usr/bin/perl -wT
+#!/usr/bin/perl 
 #
 # Simple script to calculate the final score percentage of
 # the course Learning How to Learn version 003
