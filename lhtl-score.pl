@@ -18,7 +18,7 @@ use warnings;
 
 my $total=0;                      # init
 
-print("Type of student [r]egular or [d]istincion: ");
+print("Type of student [r]egular or [d]istinction: ");
 my $type=<STDIN>;
 $type=~s/\s+$//g;
 
